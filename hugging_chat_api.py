@@ -9,14 +9,15 @@ app = Flask(__name__)
 def use_hagging_chat():
     try:   
       requestDataDict = request.get_json()
-      print(str(requestDataDict))
+      #print(str(requestDataDict))
       newChatFlag = requestDataDict['newChat']
-      print(newChatFlag)
+      #print(newChatFlag)
       inputQuestion = requestDataDict['inpout']
-      print(inputQuestion)
+      #print(inputQuestion)
+      conversation_id = requestDataDict['conversation_id']
       #respdata = vannaUtilities.generate_sql(model,question)
       #class to dictionary
-      respData = hugging_chat_utilities.ask_hugging_chat(newChatFlag,inputQuestion)
+      respData = hugging_chat_utilities.ask_hugging_chat(newChatFlag,inputQuestion,conversation_id)
       obj_dict = vars(respData)
       return obj_dict
     except Exception as e:
