@@ -41,8 +41,8 @@ def ask_hugging_chat(isNewChat: bool, question: str,id)-> clsResponse.Response:
             found_object = None
             flag = False
             for item in conversation_list:
-             print('Item id: ' + item.id)
-             print('Param id: ' + id)
+             #print('Item id: ' + item.id)
+             #print('Param id: ' + id)
              if item.id == id:
               found_object = item
               conversation_id = found_object.id
@@ -56,6 +56,7 @@ def ask_hugging_chat(isNewChat: bool, question: str,id)-> clsResponse.Response:
         
 
         query_result = chatbot.query(question)
+        #If I remove the print query_result.text will be empty
         print(query_result)
 
         response = clsResponse.Response(True,'',query_result.text,conversation_id.id)
