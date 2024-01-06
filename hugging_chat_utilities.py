@@ -8,8 +8,6 @@ def ask_hugging_chat(isNewChat: bool, question: str,id)-> clsResponse.Response:
         #By default ID -999 for new conversation
         conversation_id = "-999"
         # Log in to huggingface and grant authorization to huggingchat
-        #print("Before singin")
-        #sign = Login('christoskarathanasisac@gmail.comtest', 'Mai23021@uom.edu.gr')
         sign = Login('christoskarathanasisac@gmail.com', 'Mai23021@uom.edu.gr')
         
         cookies = sign.login()
@@ -18,12 +16,6 @@ def ask_hugging_chat(isNewChat: bool, question: str,id)-> clsResponse.Response:
         # Save cookies to the local directory
         cookie_path_dir = "./cookies_snapshot"
         sign.saveCookiesToDir(cookie_path_dir)
-
-        #print("cookies ok")
-
-        # Load cookies when you restart your program:
-        # sign = login(email, None)
-        # cookies = sign.loadCookiesFromDir(cookie_path_dir) # This will detect if the JSON file exists, return cookies if it does and raise an Exception if it's not.
 
         # Create a ChatBot
         chatbot = hugchat.ChatBot(cookies=cookies.get_dict())  # or cookie_path="usercookies/<email>.json"
@@ -41,8 +33,6 @@ def ask_hugging_chat(isNewChat: bool, question: str,id)-> clsResponse.Response:
             found_object = None
             flag = False
             for item in conversation_list:
-             #print('Item id: ' + item.id)
-             #print('Param id: ' + id)
              if item.id == id:
               found_object = item
               conversation_id = found_object.id
